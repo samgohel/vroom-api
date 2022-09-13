@@ -33,3 +33,4 @@ target/*
 bin/
 test-output/
 .DS_Store
+.project
