@@ -12,7 +12,7 @@
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<springdatajpa.version>2.2.6.RELEASE</springdatajpa.version>
-		<spring.security.version>5.3.1.RELEASE</spring.security.version>
+		<spring.security.version>5.3.9.RELEASE</spring.security.version>
 		<mysqlconnector.version>8.0.28</mysqlconnector.version>
 		<hibernate.version>5.4.15.Final</hibernate.version>
 		<hibernate.validator>6.1.5.Final</hibernate.validator>
