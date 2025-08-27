@@ -1,11 +1,10 @@
 package com.carportal.repository;
 
+import com.carportal.entity.CarDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.carportal.model.CarDetails;
-
 @Repository
-public interface CarDetailRepository extends JpaRepository<CarDetails, Long>, CarDetailRepositoryCustom {
+public interface CarDetailRepository extends JpaRepository<CarDetails, Long> {
 
 }

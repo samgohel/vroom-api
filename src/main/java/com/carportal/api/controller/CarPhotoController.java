@@ -1,4 +1,4 @@
-package com.carportal.controller;
+package com.carportal.api.controller;
 
 public class CarPhotoController {
 

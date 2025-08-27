@@ -1,6 +1,6 @@
 package com.carportal.test.model;
 
-import com.carportal.model.CarDetails;
+import com.carportal.entity.CarDetails;
 
 public class TestCarDetail {
 
