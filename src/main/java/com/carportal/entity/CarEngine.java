@@ -1,12 +1,12 @@
 package com.carportal.entity;
 
 import com.carportal.constants.ApplicationConstants.Db;
+import com.carportal.enums.TransmissionType;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
@@ -21,14 +21,11 @@ import lombok.NoArgsConstructor;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "carEngineId", scope = Long.class)
 public class CarEngine {
 
-  @Id
-  private Long carEngineId;
-
   @Column(nullable = false)
   private double mileage;
 
   @Column(nullable = false)
-  private String transmissionType;
+  private TransmissionType transmissionType;
 
   @Column(nullable = false)
   private String engineType;
@@ -40,13 +37,13 @@ public class CarEngine {
   private double maxPower;
 
   @Column(nullable = false)
-  private double maxTourque;
+  private double maxTorque;
 
   @Column(nullable = false)
   private int numberOfCylinder;
 
   @Column(nullable = false)
-  private String fuel;
+  private String fuelType;
 
   @Column(nullable = false)
   private String driveType;

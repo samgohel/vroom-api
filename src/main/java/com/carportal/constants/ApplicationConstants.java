@@ -5,7 +5,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class ApplicationConstants {
 
-  @UtilityClass
   public class Db {
 
     public static final String TBL_SCHEMA_CAR_PORTAL = "car_portal";
@@ -20,6 +19,31 @@ public class ApplicationConstants {
 
     public static final String STRATEGY = "com.carportal.config.PrefixedSequenceIdGenerator";
     public static final String BASE_CUS_SEQ_NAME = "car-seq";
+
+  }
+
+  public class Column {
+
+    // CarDetails
+    public static final String CAR_MANUFACTURER = "CAR_MANUFACTURER";
+    public static final String CAR_MODEL = "CAR_MODEL";
+    public static final String PRICE = "PRICE";
+    public static final String MANUFACTURED_YEAR = "MANUFACTURED_YEAR";
+    public static final String REGISTRATION_YEAR = "REGISTRATION_YEAR";
+    public static final String KILOMETER_DRIVEN = "KILOMETER_DRIVEN";
+    public static final String DESCRIPTION = "DESCRIPTION";
+    public static final String OWNER = "OWNER";
+
+    // CarEngine
+    public static final String MILEAGE = "OWNER";
+    public static final String TRANSMISSION_TYPE = "OWNER";
+    public static final String ENGINE_TYPE = "OWNER";
+    public static final String ENGINE_DISPLACEMENT = "OWNER";
+    public static final String MAX_POWER = "OWNER";
+    public static final String MAX_TORQUE = "OWNER";
+    public static final String NUMBER_OF_CYLINDER = "OWNER";
+    public static final String FUEL_TYPE = "OWNER";
+    public static final String DRIVE_TYPE = "OWNER";
   }
 
 }
