@@ -1,15 +1,15 @@
 package com.carportal.service;
 
-import com.carportal.entity.CarOuter;
+import com.carportal.entity.ECarOuter;
 import java.util.Optional;
 
 public interface CarOuterService {
 
-  void saveCarOuter(CarOuter entity, Long carDetailId);
+  void saveCarOuter(ECarOuter entity, Long carDetailId);
 
-  Optional<CarOuter> findById(Long carEngineId);
+  Optional<ECarOuter> findById(Long carEngineId);
 
-  Optional<CarOuter> updateById(CarOuter carOuter, Long carOuterId);
+  Optional<ECarOuter> updateById(ECarOuter ECarOuter, Long carOuterId);
 
   void deleteById(Long carDetailId);
 

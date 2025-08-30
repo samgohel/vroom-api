@@ -1,8 +1,8 @@
 package com.carportal.repository;
 
-import com.carportal.entity.CarPhoto;
+import com.carportal.entity.ECarPhoto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CarPhotoRepository extends JpaRepository<CarPhoto, Long> {
+public interface CarPhotoRepository extends JpaRepository<ECarPhoto, Long> {
 
 }

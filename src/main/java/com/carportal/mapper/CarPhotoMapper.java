@@ -1,9 +1,9 @@
 package com.carportal.mapper;
 
-import com.carportal.entity.CarPhoto;
+import com.carportal.entity.ECarPhoto;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = CarPhoto.class)
+@Mapper(componentModel = "spring", uses = ECarPhoto.class)
 public interface CarPhotoMapper {
 
 }

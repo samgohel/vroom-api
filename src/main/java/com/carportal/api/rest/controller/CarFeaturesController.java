@@ -1,8 +1,8 @@
-package com.carportal.api.controller;
+package com.carportal.api.rest.controller;
 
 import static com.carportal.utils.URLConstant.MappingConstant.ROOTURL;
 
-import com.carportal.entity.CarFeatures;
+import com.carportal.entity.ECarFeatures;
 import com.carportal.exceptions.ServiceException;
 import com.carportal.service.CarFeaturesService;
 import java.net.URI;
@@ -36,18 +36,18 @@ public class CarFeaturesController {
   }
 
   @PostMapping(path = "/carDetails/carFeature", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<CarFeatures> addCarfeatures(@RequestBody @Valid CarFeatures carFeatures,
+  public ResponseEntity<ECarFeatures> addCarfeatures(@RequestBody @Valid ECarFeatures ECarFeatures,
       @RequestParam Long carDetailId) throws ServiceException {
 
     if (logger.isTraceEnabled()) {
       logger.trace(">> addCarfeatures()");
     }
 
-    CarFeatures newCarFeatures = carFeatures;
-    carFeaturesService.saveCarFeatures(newCarFeatures, carDetailId);
+    ECarFeatures newECarFeatures = ECarFeatures;
+    carFeaturesService.saveCarFeatures(newECarFeatures, carDetailId);
 
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{carFeatureId}")
-        .buildAndExpand(newCarFeatures.getCarFeaturesId()).toUri();
+        .buildAndExpand(newECarFeatures.getCarFeaturesId()).toUri();
 
     if (logger.isTraceEnabled()) {
       logger.trace("<< addCarfeatures()");

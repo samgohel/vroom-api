@@ -1,6 +1,6 @@
 package com.carportal.service.impl;
 
-import com.carportal.entity.CarDetails;
+import com.carportal.entity.ECarDetails;
 import com.carportal.repository.CarDetailRepository;
 import com.carportal.service.CarDetailService;
 import java.util.Collection;
@@ -21,27 +21,27 @@ public class CarDetailServiceImpl implements CarDetailService {
   }
 
   @Override
-  public CarDetails saveCarDetail(CarDetails carDetails) {
-    return carDetailRepository.save(carDetails);
+  public ECarDetails saveCarDetail(ECarDetails ECarDetails) {
+    return carDetailRepository.save(ECarDetails);
   }
 
   @Override
-  public Collection<CarDetails> findAll() {
+  public Collection<ECarDetails> findAll() {
     return carDetailRepository.findAll();
   }
 
   @Override
-  public Optional<CarDetails> findById(Long carDetailId) {
+  public Optional<ECarDetails> findById(Long carDetailId) {
     return carDetailRepository.findById(carDetailId);
   }
 
   @Override
-  public Optional<CarDetails> updateById(CarDetails carDetails, Long carDetailId) {
-    Optional<CarDetails> optionalCarDetails = Optional.of(carDetails);
+  public Optional<ECarDetails> updateById(ECarDetails ECarDetails, Long carDetailId) {
+    Optional<ECarDetails> optionalCarDetails = Optional.of(ECarDetails);
     optionalCarDetails.ifPresent(car -> {
-      carDetailRepository.save(carDetails);
+      carDetailRepository.save(ECarDetails);
     });
-    return Optional.of(carDetails);
+    return Optional.of(ECarDetails);
   }
 
   @Override

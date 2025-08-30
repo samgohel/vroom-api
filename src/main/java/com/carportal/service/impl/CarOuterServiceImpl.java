@@ -1,7 +1,7 @@
 package com.carportal.service.impl;
 
-import com.carportal.entity.CarDetails;
-import com.carportal.entity.CarOuter;
+import com.carportal.entity.ECarDetails;
+import com.carportal.entity.ECarOuter;
 import com.carportal.repository.CarOuterRepository;
 import com.carportal.service.CarDetailService;
 import com.carportal.service.CarOuterService;
@@ -26,8 +26,8 @@ public class CarOuterServiceImpl implements CarOuterService {
   }
 
   @Override
-  public void saveCarOuter(CarOuter entity, Long carDetailId) {
-    Optional<CarDetails> optionalCarDetails = Optional.of(carDetailService.findById(carDetailId))
+  public void saveCarOuter(ECarOuter entity, Long carDetailId) {
+    Optional<ECarDetails> optionalCarDetails = Optional.of(carDetailService.findById(carDetailId))
         .get();
     optionalCarDetails.ifPresent(carDetails -> {
       entity.setCarDetails(carDetails);
@@ -36,19 +36,19 @@ public class CarOuterServiceImpl implements CarOuterService {
   }
 
   @Override
-  public Optional<CarOuter> findById(Long carDetailId) {
+  public Optional<ECarOuter> findById(Long carDetailId) {
     return carOuterRepository.findById(carDetailId);
   }
 
   @Override
-  public Optional<CarOuter> updateById(CarOuter carOuter, Long carDetailId) {
-    Optional<CarDetails> optionalCarDetails = Optional.of(carDetailService.findById(carDetailId))
+  public Optional<ECarOuter> updateById(ECarOuter ECarOuter, Long carDetailId) {
+    Optional<ECarDetails> optionalCarDetails = Optional.of(carDetailService.findById(carDetailId))
         .get();
     optionalCarDetails.ifPresent(carDetails -> {
-      carOuter.setCarDetails(carDetails);
-      carOuterRepository.save(carOuter);
+      com.carportal.entity.ECarOuter.setCarDetails(carDetails);
+      carOuterRepository.save(ECarOuter);
     });
-    return Optional.of(carOuter);
+    return Optional.of(ECarOuter);
   }
 
   @Override

@@ -1,6 +1,6 @@
 package com.carportal.service;
 
-import com.carportal.entity.CarDetails;
+import com.carportal.entity.ECarDetails;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CarDetailService {
 
-  CarDetails saveCarDetail(CarDetails carDetails);
+  ECarDetails saveCarDetail(ECarDetails ECarDetails);
 
-  Collection<CarDetails> findAll();
+  Collection<ECarDetails> findAll();
 
-  Optional<CarDetails> findById(Long carDetailsId);
+  Optional<ECarDetails> findById(Long carDetailsId);
 
-  Optional<CarDetails> updateById(CarDetails carDetails, Long carDetailsId);
+  Optional<ECarDetails> updateById(ECarDetails ECarDetails, Long carDetailsId);
 
   void deleteById(Long carDetailsId);
 

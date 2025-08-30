@@ -1,17 +1,17 @@
 package com.carportal.service;
 
-import com.carportal.entity.CarEngine;
+import com.carportal.entity.ECarEngine;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface CarEngineService {
 
-  void saveCarEngine(CarEngine entity, Long carDetailId);
+  void saveCarEngine(ECarEngine entity, Long carDetailId);
 
-  Optional<CarEngine> findById(Long carEngineId);
+  Optional<ECarEngine> findById(Long carEngineId);
 
-  Optional<CarEngine> updateById(CarEngine carEngine, Long carEngineId);
+  Optional<ECarEngine> updateById(ECarEngine ECarEngine, Long carEngineId);
 
   void deleteById(Long carDetailId);
 

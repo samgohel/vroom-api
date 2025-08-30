@@ -1,6 +1,9 @@
 package com.carportal.entity;
 
+import com.carportal.constants.ApplicationConstants;
 import com.carportal.constants.ApplicationConstants.Db;
+import com.carportal.enums.Drivetrain;
+import com.carportal.enums.FuelType;
 import com.carportal.enums.TransmissionType;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -19,38 +22,38 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(schema = Db.TBL_SCHEMA_CAR_PORTAL, name = Db.TBL_CAR_ENGINE)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "carEngineId", scope = Long.class)
-public class CarEngine {
+public class ECarEngine {
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.MILEAGE, nullable = false)
   private double mileage;
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.TRANSMISSION_TYPE, nullable = false)
   private TransmissionType transmissionType;
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.ENGINE_TYPE, nullable = false)
   private String engineType;
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.ENGINE_DISPLACEMENT, nullable = false)
   private double engineDisplacement;
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.MAX_POWER, nullable = false)
   private double maxPower;
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.MAX_TORQUE, nullable = false)
   private double maxTorque;
 
-  @Column(nullable = false)
+  @Column(name = ApplicationConstants.Column.NUMBER_OF_CYLINDER, nullable = false)
   private int numberOfCylinder;
 
-  @Column(nullable = false)
-  private String fuelType;
+  @Column(name = ApplicationConstants.Column.FUEL_TYPE, nullable = false)
+  private FuelType fuelType;
 
-  @Column(nullable = false)
-  private String driveType;
+  @Column(name = ApplicationConstants.Column.DRIVETRAIN, nullable = false)
+  private Drivetrain drivetrain;
 
   @MapsId
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "carDetailId")
-  private CarDetails carDetails;
+  private ECarDetails ECarDetails;
 
 }

@@ -1,8 +1,8 @@
-package com.carportal.api.controller;
+package com.carportal.api.rest.controller;
 
 import static com.carportal.utils.URLConstant.MappingConstant.ROOTURL;
 
-import com.carportal.entity.CarOuter;
+import com.carportal.entity.ECarOuter;
 import com.carportal.exceptions.ServiceException;
 import com.carportal.service.CarOuterService;
 import java.net.URI;
@@ -35,7 +35,7 @@ public class CarOuterController {
   }
 
   @PostMapping(path = "/cardetails/carouter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<CarOuter> addCarOuter(@RequestBody CarOuter carOuter,
+  public ResponseEntity<ECarOuter> addCarOuter(@RequestBody ECarOuter ECarOuter,
       @RequestParam Long carDetailId)
       throws ServiceException {
 
@@ -43,10 +43,10 @@ public class CarOuterController {
       logger.trace(">> addCarOuter()");
     }
 
-    CarOuter newCarOuter = carOuter;
-    carOuterService.saveCarOuter(newCarOuter, carDetailId);
+    ECarOuter newECarOuter = ECarOuter;
+    carOuterService.saveCarOuter(newECarOuter, carDetailId);
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{carOuterId}")
-        .buildAndExpand(newCarOuter.getCarOuterId()).toUri();
+        .buildAndExpand(newECarOuter.getCarOuterId()).toUri();
     if (logger.isTraceEnabled()) {
       logger.trace("<< addCarOuter()");
     }

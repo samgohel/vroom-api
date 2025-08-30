@@ -43,7 +43,44 @@ public class ApplicationConstants {
     public static final String MAX_TORQUE = "OWNER";
     public static final String NUMBER_OF_CYLINDER = "OWNER";
     public static final String FUEL_TYPE = "OWNER";
-    public static final String DRIVE_TYPE = "OWNER";
+    public static final String DRIVETRAIN = "DRIVETRAIN";
+
+    // CarFeatures
+    public static final String AIR_CONDITIONER = "AIR_CONDITIONER";
+    public static final String HEATER = "HEATER";
+    public static final String SEAT_MATERIAL = "SEAT_MATERIAL";
+    public static final String STEERING_WHEEL_MATERIAL = "STEERING_WHEEL_MATERIAL";
+    public static final String POWER_WINDOWS = "POWER_WINDOWS";
+    public static final String ADJUSTABLE_STEERING = "ADJUSTABLE_STEERING";
+    public static final String REMOTE_TRUNK_OPENER = "REMOTE_TRUNK_OPENER";
+    public static final String REAR_SEAT_HEADREST = "REAR_SEAT_HEADREST";
+    public static final String REAR_SEAT_CENTRE_ARMREST = "REAR_SEAT_CENTRE_ARMREST";
+    public static final String REAR_AC_VENTS = "REAR_AC_VENTS";
+    public static final String NAVIGATION_SYSTEM = "NAVIGATION_SYSTEM";
+    public static final String REVERSING_CAMERA = "REVERSING_CAMERA";
+    public static final String REAR_VIEW_MIRROR_TYPE = "REAR_VIEW_MIRROR_TYPE";
+    public static final String SUNROOF = "SUNROOF";
+    public static final String ANTI_LOCK_BRAKING_SYSTEM = "ANTI_LOCK_BRAKING_SYSTEM";
+    public static final String CENTRAL_LOCKING = "CENTRAL_LOCKING";
+    public static final String POWER_DOOR_LOCKS = "POWER_DOOR_LOCKS";
+    public static final String CHILD_SAFETY_LOCK = "CHILD_SAFETY_LOCK";
+    public static final String ANTI_THEFT_ALARM = "ANTI_THEFT_ALARM";
+    public static final String AIRBAG_CONFIG = "AIRBAG_CONFIG";
+
+    // CarOuter
+    public static final String CAR_BODY_TYPE = "CAR_BODY_TYPE";
+    public static final String COLOR = "COLOR";
+    public static final String LENGTH = "LENGTH";
+    public static final String HEIGHT = "HEIGHT";
+    public static final String WIDTH = "WIDTH";
+    public static final String GROUND_CLEARANCE = "GROUND_CLEARANCE";
+    public static final String BOOT_SPACE = "BOOT_SPACE";
+    public static final String SEATING_CAPACITY = "SEATING_CAPACITY";
+    public static final String FUEL_TANK_CAPACITY = "FUEL_TANK_CAPACITY";
+    public static final String NO_OF_DOORS = "NO_OF_DOORS";
+    public static final String FRONT_BRAKE_TYPE = "FRONT_BRAKE_TYPE";
+    public static final String REAR_BRAKE_TYPE = "REAR_BRAKE_TYPE";
+
   }
 
 }

@@ -1,8 +1,8 @@
-package com.carportal.api.controller;
+package com.carportal.api.rest.controller;
 
 import static com.carportal.utils.URLConstant.MappingConstant.ROOTURL;
 
-import com.carportal.entity.CarDetails;
+import com.carportal.entity.ECarDetails;
 import com.carportal.service.CarDetailService;
 import java.net.URI;
 import java.util.Optional;
@@ -39,14 +39,14 @@ public class CarDetailController {
   }
 
   @PostMapping(path = "/cardetails", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<CarDetails> addCarDetails(@RequestBody CarDetails carDetails) {
+  public ResponseEntity<ECarDetails> addCarDetails(@RequestBody ECarDetails ECarDetails) {
     if (logger.isTraceEnabled()) {
       logger.trace(">> addCarDetails()");
     }
-    CarDetails newCarDetails = carDetailService.saveCarDetail(carDetails);
+    ECarDetails newECarDetails = carDetailService.saveCarDetail(ECarDetails);
 
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{carDetailId}")
-        .buildAndExpand(newCarDetails.getCarDetailId()).toUri();
+        .buildAndExpand(newECarDetails.getCarDetailId()).toUri();
 
     if (logger.isTraceEnabled()) {
       logger.trace("<< addCarDetails()");
@@ -58,16 +58,16 @@ public class CarDetailController {
 
   @GetMapping(path = "/cardetail/{carDetailId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.OK)
-  public Optional<CarDetails> getById(@PathVariable Long carDetailId) {
+  public Optional<ECarDetails> getById(@PathVariable Long carDetailId) {
     logger.debug("Cardetail Controller getById Method");
     return carDetailService.findById(carDetailId);
   }
 
   @PutMapping(path = "/cardetail/{carDetailId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<CarDetails> updateCar(@PathVariable Long carDetailId,
-      @RequestBody CarDetails carDetails) {
+  public ResponseEntity<ECarDetails> updateCar(@PathVariable Long carDetailId,
+      @RequestBody ECarDetails ECarDetails) {
     logger.debug("Cardetail Controller updateCar Method");
-    return new ResponseEntity<>(carDetailService.updateById(carDetails, carDetailId).get(),
+    return new ResponseEntity<>(carDetailService.updateById(ECarDetails, carDetailId).get(),
         HttpStatus.OK);
   }
 

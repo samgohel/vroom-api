@@ -1,8 +1,8 @@
-package com.carportal.api.controller;
+package com.carportal.api.rest.controller;
 
 import static com.carportal.utils.URLConstant.MappingConstant.ROOTURL;
 
-import com.carportal.entity.CarEngine;
+import com.carportal.entity.ECarEngine;
 import com.carportal.exceptions.ServiceException;
 import com.carportal.service.CarEngineService;
 import java.net.URI;
@@ -41,14 +41,14 @@ public class CarEngineController {
   }
 
   @PostMapping(path = "/cardetails/carengines", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<CarEngine> addCarEngine(@RequestBody @Valid CarEngine newCarEngine,
+  public ResponseEntity<ECarEngine> addCarEngine(@RequestBody @Valid ECarEngine newECarEngine,
       @RequestParam Long carDetailId) throws ServiceException {
     if (logger.isTraceEnabled()) {
       logger.trace(">> addCarEngine()");
     }
-    carEngineService.saveCarEngine(newCarEngine, carDetailId);
+    carEngineService.saveCarEngine(newECarEngine, carDetailId);
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{carEngineId}")
-        .buildAndExpand(newCarEngine.getCarEngineId()).toUri();
+        .buildAndExpand(newECarEngine.getCarEngineId()).toUri();
 
     if (logger.isTraceEnabled()) {
       logger.trace("<< addCarEngine()");
@@ -59,7 +59,7 @@ public class CarEngineController {
 
   @GetMapping(path = "/cardetails/carengine/{carEngineId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.FOUND)
-  public CarEngine getById(@PathVariable Long carEngineId) throws Exception {
+  public ECarEngine getById(@PathVariable Long carEngineId) throws Exception {
     logger.debug("CarEngine Controller getById Method");
     return carEngineService.findById(carEngineId)
         .orElseThrow(() -> new EntityNotFoundException(Long.toString(carEngineId)));
