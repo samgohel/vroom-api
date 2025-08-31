@@ -1,60 +1,46 @@
 package com.carportal.exceptions;
 
-public class ServiceException extends Exception {
+import com.carportal.exceptions.common.ExceptionType;
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
-	private static final long serialVersionUID = 1808028981090222448L;
+@Getter
+public class ServiceException extends RuntimeException {
 
-	private int  exceptionType = 0;
+  private final ExceptionType type;
+  private final String messageCode;
+  private final HttpStatus httpStatus;
 
-	private String messageCode = null;
+  // Constructors
+  public ServiceException(ExceptionType type, String message, String messageCode,
+      HttpStatus httpStatus, Throwable cause) {
+    super(message, cause);
+    this.type = type != null ? type : ExceptionType.UNKNOWN;
+    this.messageCode = messageCode != null ? messageCode : "error.unknown";
+    this.httpStatus = httpStatus != null ? httpStatus : HttpStatus.INTERNAL_SERVER_ERROR;
+  }
 
-	public int getExceptionType() {
-		return exceptionType;
-	}
+  public ServiceException(ExceptionType type, String message, String messageCode,
+      HttpStatus httpStatus) {
+    this(type, message, messageCode, httpStatus, null);
+  }
 
-	public void setExceptionType(int exceptionType) {
-		this.exceptionType = exceptionType;
-	}
+  public ServiceException(ExceptionType type, String message, String messageCode) {
+    this(type, message, messageCode, HttpStatus.INTERNAL_SERVER_ERROR, null);
+  }
 
-	public String getMessageCode() {
-		return messageCode;
-	}
+  public ServiceException(ExceptionType type, String message) {
+    this(type, message, "error." + type.name().toLowerCase(), defaultStatus(type), null);
+  }
 
-	public void setMessageCode(String messageCode) {
-		this.messageCode = messageCode;
-	}
-
-	public ServiceException() {
-		super();
-	}
-
-	public ServiceException(String messageCode) {
-		super();
-		this.messageCode = messageCode;
-	}
-
-	public ServiceException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public ServiceException(Throwable cause) {
-		super(cause.getMessage(), cause);
-	}
-
-	public ServiceException(int exceptionType) {
-		super();
-		this.exceptionType = exceptionType;
-	}
-
-	public ServiceException(int exceptionType, String message) {
-		super(message);
-		this.exceptionType = exceptionType;
-	}
-
-	public ServiceException(int exceptionType, String message, String messageCode) {
-		super(message);
-		this.messageCode = messageCode;
-		this.exceptionType = exceptionType;
-	}
+  private static HttpStatus defaultStatus(ExceptionType type) {
+    return switch (type) {
+      case VALIDATION -> HttpStatus.BAD_REQUEST;
+      case BUSINESS -> HttpStatus.UNPROCESSABLE_ENTITY;
+      case DATABASE -> HttpStatus.CONFLICT;
+      case NETWORK -> HttpStatus.GATEWAY_TIMEOUT;
+      default -> HttpStatus.INTERNAL_SERVER_ERROR;
+    };
+  }
 
 }
