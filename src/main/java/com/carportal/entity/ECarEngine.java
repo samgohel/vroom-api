@@ -2,11 +2,11 @@ package com.carportal.entity;
 
 import com.carportal.constants.ApplicationConstants;
 import com.carportal.constants.ApplicationConstants.Db;
+import com.carportal.entity.common.AuditableEntity;
 import com.carportal.enums.Drivetrain;
 import com.carportal.enums.FuelType;
 import com.carportal.enums.TransmissionType;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,15 +14,22 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter(AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(onlyExplicitlyIncluded = true, callSuper = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @Table(schema = Db.TBL_SCHEMA_CAR_PORTAL, name = Db.TBL_CAR_ENGINE)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "carEngineId", scope = Long.class)
-public class ECarEngine {
+@AttributeOverride(name = ApplicationConstants.Column.ID, column = @Column(name = ApplicationConstants.Column.CAR_ENGINE_ID))
+public class ECarEngine extends AuditableEntity {
 
   @Column(name = ApplicationConstants.Column.MILEAGE, nullable = false)
   private double mileage;
@@ -54,6 +61,6 @@ public class ECarEngine {
   @MapsId
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "carDetailId")
-  private ECarDetails ECarDetails;
+  private ECarDetails eCarDetails;
 
 }

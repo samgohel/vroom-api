@@ -24,7 +24,17 @@ public class ApplicationConstants {
 
   public class Column {
 
+    // base & audit columns
+    public static final String ID = "id";
+    public static final String CREATED_AT = "CREATED_AT";
+    public static final String CREATED_BY = "CREATED_BY";
+    public static final String UPDATED_AT = "UPDATED_AT";
+    public static final String UPDATED_BY = "UPDATED_BY";
+    public static final String VERSION = "version";
+
+
     // CarDetails
+    public static final String CAR_DETAIL_ID = "CAR_DETAIL_ID";
     public static final String CAR_MANUFACTURER = "CAR_MANUFACTURER";
     public static final String CAR_MODEL = "CAR_MODEL";
     public static final String PRICE = "PRICE";
@@ -35,6 +45,7 @@ public class ApplicationConstants {
     public static final String OWNER = "OWNER";
 
     // CarEngine
+    public static final String CAR_ENGINE_ID = "CAR_ENGINE_ID";
     public static final String MILEAGE = "OWNER";
     public static final String TRANSMISSION_TYPE = "OWNER";
     public static final String ENGINE_TYPE = "OWNER";
@@ -46,6 +57,7 @@ public class ApplicationConstants {
     public static final String DRIVETRAIN = "DRIVETRAIN";
 
     // CarFeatures
+    public static final String CAR_FEATURES_ID = "CAR_FEATURES_ID";
     public static final String AIR_CONDITIONER = "AIR_CONDITIONER";
     public static final String HEATER = "HEATER";
     public static final String SEAT_MATERIAL = "SEAT_MATERIAL";
@@ -68,6 +80,7 @@ public class ApplicationConstants {
     public static final String AIRBAG_CONFIG = "AIRBAG_CONFIG";
 
     // CarOuter
+    public static final String CAR_OUTER_ID = "CAR_OUTER_ID";
     public static final String CAR_BODY_TYPE = "CAR_BODY_TYPE";
     public static final String COLOR = "COLOR";
     public static final String LENGTH = "LENGTH";
@@ -82,5 +95,20 @@ public class ApplicationConstants {
     public static final String REAR_BRAKE_TYPE = "REAR_BRAKE_TYPE";
 
   }
+
+  public class Exception {
+
+    public static final String ERROR_RES_TYPE_API = "apierror";
+    public static final String ERROR_RES_TYPE_PROBLEM = "problemjson";
+    public static final String ERR_CAR_NOT_FOUND = "Car with id %s not found";
+    public static final String ERR_CAR_ALREADY_EXISTS = "Car with id %s already exists";
+    public static final String ERR_INVALID_CAR_DATA = "Invalid car data: %s";
+    public static final String ERR_INTERNAL_SERVER = "Internal server error: %s";
+  }
+
+  // Bean & Config
+  public static final String AUDIT_PROVIDER_NAME = "auditorProvider";
+  public static final String PKG_REPOSITORY = "com.carportal.repository";
+
 
 }

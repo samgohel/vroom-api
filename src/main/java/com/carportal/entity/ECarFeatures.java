@@ -2,18 +2,32 @@ package com.carportal.entity;
 
 import com.carportal.constants.ApplicationConstants;
 import com.carportal.constants.ApplicationConstants.Db;
+import com.carportal.entity.common.AuditableEntity;
 import com.carportal.enums.Material;
+import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter(AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(onlyExplicitlyIncluded = true, callSuper = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @Table(schema = Db.TBL_SCHEMA_CAR_PORTAL, name = Db.TBL_CAR_FEATURES)
-public class ECarFeatures {
+@AttributeOverride(name = ApplicationConstants.Column.ID, column = @Column(name = ApplicationConstants.Column.CAR_FEATURES_ID))
+public class ECarFeatures extends AuditableEntity {
 
   // Cabin Comfort
   @Column(name = ApplicationConstants.Column.AIR_CONDITIONER, nullable = false, columnDefinition = "boolean default false")
@@ -81,5 +95,10 @@ public class ECarFeatures {
 
   @Column(name = ApplicationConstants.Column.AIRBAG_CONFIG, nullable = false)
   private int airbagConfig;
+
+  @MapsId
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "carDetailId")
+  private ECarDetails eCarDetails;
 
 }

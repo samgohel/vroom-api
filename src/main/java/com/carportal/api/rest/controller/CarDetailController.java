@@ -2,73 +2,28 @@ package com.carportal.api.rest.controller;
 
 import static com.carportal.utils.URLConstant.MappingConstant.ROOTURL;
 
+import com.carportal.api.rest.dto.common.PageRequestDTO;
+import com.carportal.api.rest.dto.common.PagedResponse;
 import com.carportal.entity.ECarDetails;
 import com.carportal.service.CarDetailService;
-import java.net.URI;
-import java.util.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = ROOTURL)
 public class CarDetailController {
 
-  private final Logger logger = LoggerFactory.getLogger(CarDetailController.class.getName());
+  private final CarDetailService service;
 
-  private CarDetailService carDetailService;
 
-  @Autowired
-  public CarDetailController(CarDetailService carDetailService) {
-    if (logger.isTraceEnabled()) {
-      logger.trace("** CarDetailController()");
-    }
-    this.carDetailService = carDetailService;
-  }
-
-  @PostMapping(path = "/cardetails", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<ECarDetails> addCarDetails(@RequestBody ECarDetails ECarDetails) {
-    if (logger.isTraceEnabled()) {
-      logger.trace(">> addCarDetails()");
-    }
-    ECarDetails newECarDetails = carDetailService.saveCarDetail(ECarDetails);
-
-    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{carDetailId}")
-        .buildAndExpand(newECarDetails.getCarDetailId()).toUri();
-
-    if (logger.isTraceEnabled()) {
-      logger.trace("<< addCarDetails()");
-    }
-
-    return ResponseEntity.created(uri).build();
-
-  }
-
-  @GetMapping(path = "/cardetail/{carDetailId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseStatus(HttpStatus.OK)
-  public Optional<ECarDetails> getById(@PathVariable Long carDetailId) {
-    logger.debug("Cardetail Controller getById Method");
-    return carDetailService.findById(carDetailId);
-  }
-
-  @PutMapping(path = "/cardetail/{carDetailId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<ECarDetails> updateCar(@PathVariable Long carDetailId,
-      @RequestBody ECarDetails ECarDetails) {
-    logger.debug("Cardetail Controller updateCar Method");
-    return new ResponseEntity<>(carDetailService.updateById(ECarDetails, carDetailId).get(),
-        HttpStatus.OK);
+  @GetMapping
+  public PagedResponse<ECarDetails> getCars(@ModelAttribute PageRequestDTO request) {
+//    var page = repository.findAll(request.toPageable());
+    return PagedResponse.fromPage(null);
   }
 
 }

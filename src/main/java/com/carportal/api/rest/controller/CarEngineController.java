@@ -5,9 +5,9 @@ import static com.carportal.utils.URLConstant.MappingConstant.ROOTURL;
 import com.carportal.entity.ECarEngine;
 import com.carportal.exceptions.ServiceException;
 import com.carportal.service.CarEngineService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import java.net.URI;
-import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class CarEngineController {
     }
     carEngineService.saveCarEngine(newECarEngine, carDetailId);
     URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{carEngineId}")
-        .buildAndExpand(newECarEngine.getCarEngineId()).toUri();
+        .buildAndExpand(newECarEngine.getId()).toUri();
 
     if (logger.isTraceEnabled()) {
       logger.trace("<< addCarEngine()");
